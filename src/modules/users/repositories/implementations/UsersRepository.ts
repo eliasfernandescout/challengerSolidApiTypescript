@@ -1,13 +1,14 @@
 import { User } from '../../entities/Users';
 import { ICreateUsersDTO, IUsersRepository } from '../IUsersRepository';
 
-class UserRepository implements IUsersRepository {
+class UsersRepository implements IUsersRepository {
     private users: User[];
 
     constructor() {
         this.users = [];
     }
-    create({ name, email }: ICreateUsersDTO): void {
+
+    create({ name, email }: ICreateUsersDTO): User {
         const user = new User();
 
         Object.assign(user, {
@@ -17,11 +18,19 @@ class UserRepository implements IUsersRepository {
         });
 
         this.users.push(user);
+        console.log(this.users);
+        return user;
     }
+
+    list(): User[] {
+        console.log(this.users);
+        return this.users;
+    }
+
     findByName(name: string): User {
         const user = this.users.find(user => user.name === name);
         return user;
     }
 }
 
-export { UserRepository };
+export { UsersRepository };

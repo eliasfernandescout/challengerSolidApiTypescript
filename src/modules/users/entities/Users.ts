@@ -4,7 +4,9 @@ class User {
     id?: string;
     name: string;
     email: string;
+    admin: string;
     created_at: Date;
+    updated_at: Date;
 
     constructor() {
         if (!this.id) {

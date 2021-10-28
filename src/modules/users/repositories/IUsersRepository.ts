@@ -5,8 +5,9 @@ interface ICreateUsersDTO {
     email: string;
 }
 interface IUsersRepository {
-    create({ name, email }: ICreateUsersDTO): void;
     findByName(name: string): User;
+    list(): User[];
+    create({ name, email }: ICreateUsersDTO): User;
 }
 
 export { IUsersRepository, ICreateUsersDTO };
